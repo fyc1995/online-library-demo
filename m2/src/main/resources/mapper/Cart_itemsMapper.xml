@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--一个mapper对应一个接口-->
+<mapper namespace="com.example.m2.dao.Cart_itemsMapper">
+
+    <select id="queryItemById" resultType="cart_items">
+        select *  from BookMall.cart_items where id = #{id}
+    </select>
+
+    <select id="queryItemListByCartID" resultType="cart_items">
+        select *  from BookMall.cart_items where cart_id = #{cart_id}
+    </select>
+
+    <insert id="addItem" parameterType="cart_items">
+        insert into BookMall.cart_items (cart_id,bookID,bookName,quantity) values(#{cart_id},#{bookID},#{bookName},#{quantity});
+    </insert>
+    <delete id="deleteItemById" parameterType="int">
+        delete from BookMall.cart_items where id = #{id}
+    </delete>
+
+
+</mapper>

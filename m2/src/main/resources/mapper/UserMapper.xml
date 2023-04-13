@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--一个mapper对应一个接口-->
+<mapper namespace="com.example.m2.dao.UserMapper">
+
+    <select id="queryUserList" resultType="User">
+            select id , name ,email ,registerDate from BookMall.user
+    </select>
+    <select id="queryUserById" resultType="User">
+        select * from BookMall.user where id = #{id}
+    </select>
+    <select id="Login" resultType="User">
+        select  * from BookMall.user where name = #{name} and password = #{password}
+    </select>
+    <insert id="addUser" parameterType="User">
+        insert into BookMall.user (name,password,email,registerDate) values(#{name},#{password},#{email},#{registerDate});
+    </insert>
+    <delete id="deleteUserById" parameterType="int">
+        delete from BookMall.user where id = #{id}
+    </delete>
+    <select id="check" resultType="User">
+        select  * from BookMall.user where name = #{name}
+    </select>
+<!--    <update id="updateBook" parameterType="User">-->
+<!--        update BookMall.user set name = #{name},passward = #{passward}-->
+<!--                                ,email = #{email}, registerDate = #{registerDate}-->
+<!--        where id = #{id};-->
+<!--    </update>-->
+
+
+
+</mapper>

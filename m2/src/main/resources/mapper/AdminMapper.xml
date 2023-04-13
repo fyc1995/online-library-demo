@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--一个mapper对应一个接口-->
+<mapper namespace="com.example.m2.dao.AdminMapper">
+
+    <select id="queryAdminList" resultType="Admin">
+        select admin_id , username   from BookMall.admin
+    </select>
+    <select id="queryAdminById" resultType="Admin">
+        select * from BookMall.admin where admin_id = #{admin_id}
+    </select>
+    <select id="admin_Login" resultType="Admin">
+        select  * from BookMall.admin where username = #{username} and password = #{password}
+    </select>
+    <insert id="addAdmin" parameterType="Admin">
+        insert into BookMall.admin (username,password) values(#{username},#{password});
+    </insert>
+    <delete id="deleteAdminById" parameterType="int">
+        delete from BookMall.admin where admin_id = #{admin_id}
+    </delete>
+    <select id="checkAdmin" resultType="Admin">
+        select  * from BookMall.admin where username = #{username}
+    </select>
+        <update id="updateAdmin" parameterType="Admin">
+            update BookMall.admin set username = #{username},passward = #{passward}
+            where admin_id = #{admin_id};
+        </update>
+
+</mapper>

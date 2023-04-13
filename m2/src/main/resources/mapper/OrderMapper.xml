@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--一个mapper对应一个接口-->
+<mapper namespace="com.example.m2.dao.OrderMapper">
+
+    <select id="queryOrdersByUserId" resultType="Order">
+        select * from BookMall.order where user_id = #{user_id}
+    </select>
+
+    <insert id="addOrder" parameterType="Order">
+        insert into BookMall.order (order_no,user_id,order_status,order_date) values(#{order_no},#{user_id},#{order_status},#{order_date});
+    </insert>
+    <delete id="deleteOrderByNo" parameterType="String">
+        delete from BookMall.order where order_no = #{order_no}
+    </delete>
+
+<!--        <update id="updateOrder" parameterType="Order">-->
+<!--            update BookMall.order set username = #{username},passward = #{passward}-->
+<!--            where id = #{id};-->
+<!--        </update>-->
+
+</mapper>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Signin Template for Bootstrap</title>
+		<!-- Bootstrap core CSS -->
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link th:href="@{/css/signin.css}" rel="stylesheet">
+	</head>
+
+	<body class="text-center">
+		<form class="form-signin" th:action="@{/user/toRegister}" method="post">
+			<img class="mb-4" th:src="@{/img/bootstrap-solid.svg}" alt="" width="72" height="72">
+			<h1 class="h3 mb-3 font-weight-normal" th:text="#{register.tip}">Please Register</h1>
+<!--			如果msg的值为空 则不显示消息-->
+			<p style="color: red" th:text="${msg}" th:if = "${not #strings.isEmpty(msg)}"/>
+
+			<div class="checkbox mb-3">
+			<label class="sr-only" th:text="#{login.username}">Please set Username</label>
+			<input type="text" name="name" class="form-control" th:placeholder="#{login.username}" required="" autofocus="">
+			</div>
+
+			<div class="checkbox mb-3">
+			<label class="sr-only" th:text="#{login.password}">Please set Password</label>
+			<input type="password" name="password" class="form-control" th:placeholder="#{login.password}" required="">
+			</div>
+
+			<div class="checkbox mb-3">
+			<label	th:text="#{register.email}"></label>
+			<input type="email" name="email" class="form-control"  th:placeholder="#{register.email}">
+			</div>
+
+<!--			<div class="checkbox mb-3">-->
+<!--			<label th:text="#{register.date}">date</label>-->
+<!--			<input type="date" name="registerDate" class="form-control"  >-->
+
+<!--			</div>-->
+			<button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{register.btn}">register in</button>
+
+			<p class="mt-5 mb-3 text-muted">© 2020-2022</p>
+			<a class="btn btn-sm" th:href="@{/user/register(lang='en_US')}">English</a>
+			<a class="btn btn-sm" th:href="@{/user/register(lang='zh_CN')}">中文</a>
+
+		</form>
+
+	</body>
+
+</html>
